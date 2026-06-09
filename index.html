@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCity-Fix</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <h1>SmartCity-Fix</h1>
+            <p>Sistema Inteligente de Reportes Urbanos</p>
+    
+            <button id="themeToggle">
+                🌙 Modo Oscuro
+            </button>
+
+            <button id="themeToggle">
+                <a href="mapa.html" class="mapa2">🗺️ Mapa</a>
+            </button>
+
+        </header>
+    
+        <form id="reportForm">
+    
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input
+                    type="text"
+                    id="nombre"
+                    required
+                >
+            </div>
+    
+            <div class="form-group">
+                <label>Documento</label>
+                <input
+                    type="text"
+                    id="documento"
+                    required
+                >
+            </div>
+    
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input
+                    type="tel"
+                    id="telefono"
+                    required
+                >
+            </div>
+    
+            <div class="form-group">
+                <label>Descripción del Incidente</label>
+                <textarea
+                    id="descripcion"
+                    rows="5"
+                    required
+                ></textarea>
+            </div>
+    
+            <div class="form-group">
+                <label>Fotografía del Incidente</label>
+                <input
+                    type="file"
+                    id="foto"
+                    accept="image/*"
+                    capture="environment"
+                >
+            </div>
+    
+            <div class="form-group">
+                <button
+                    type="button"
+                    id="gpsButton"
+                >
+                    📍 Obtener Ubicación
+                </button>
+            </div>
+    
+            <div class="location-info">
+                <p id="latitudText">Latitud: No disponible</p>
+                <p id="longitudText">Longitud: No disponible</p>
+            </div>
+    
+            <input type="hidden" id="latitud">
+            <input type="hidden" id="longitud">
+    
+            <button
+                type="submit"
+                class="submit-btn"
+            >
+                Enviar Reporte
+            </button>
+            
+            <h3><a href="https://t.me/Smart_City_JSON_bot">consulta mas de tus repiortes en: </a></h3>
+
+        </form>
+    
+        <div id="statusMessage"></div>
+    
+    </div>
+</body>
+
+<script src="script.js"></script>
+</html>

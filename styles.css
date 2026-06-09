@@ -1,0 +1,129 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+    min-height:100vh;
+    padding:20px;
+    transition:.3s;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+header h1{
+    color:#1565c0;
+    margin-bottom:10px;
+}
+
+header p{
+    color:#666;
+    margin-bottom:15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#themeToggle{
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+textarea{
+    resize:vertical;
+}
+
+#gpsButton{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.location-info{
+    margin-bottom:20px;
+    padding:10px;
+    background:#eef5ff;
+    border-radius:8px;
+}
+
+
+
+.submit-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#1565c0;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    opacity:.9;
+}
+
+#statusMessage{
+    margin-top:15px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .container{
+    background:#1f1f1f;
+}
+
+.dark-mode input,
+.dark-mode textarea{
+    background:#2d2d2d;
+    color:white;
+    border:1px solid #444;
+}
+
+.dark-mode .location-info{
+    background:#2a2a2a;
+}

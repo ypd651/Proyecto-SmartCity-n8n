@@ -1,0 +1,396 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1038921048,
+          "mode": "list",
+          "cachedResultName": "Datos_usuario",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI/edit#gid=1038921048"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Documento": "={{$json.body.documento}}",
+            "Descripción": "={{$json.body.descripcion}}",
+            "Teléfono": "={{$json.body.telefono}}",
+            "Foto URL": "={{$json.body.foto}}",
+            "Latitud": "={{$json.body.latitud}}",
+            "Longitud": "={{$json.body.longitud}}",
+            "Ticket ID": "={{$json.ticketId}}",
+            "Nombre": "={{$json.body.nombre}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Ticket ID",
+              "displayName": "Ticket ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Documento",
+              "displayName": "Documento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Foto URL",
+              "displayName": "Foto URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latitud",
+              "displayName": "Latitud",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Longitud",
+              "displayName": "Longitud",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -192,
+        128
+      ],
+      "id": "0c2c3716-2f73-4128-b6fb-d60f15379929",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lf87vX0PcFqj6SHm",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "smartcity-report",
+        "options": {
+          "responseCode": {
+            "values": {}
+          },
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Methods",
+                "value": "GET, POST, OPTIONS"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -432,
+        240
+      ],
+      "id": "e9952bef-e208-4c9f-a242-7549bf67c882",
+      "name": "Webhook",
+      "webhookId": "eb7e2dd6-1baa-4acc-839d-c99a8f406a31"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "84f9e5f6-d205-450e-97f5-e3fbfd3d1d8b",
+              "name": "ticketId",
+              "value": "=SCF-{{$now.toFormat('yyyyMMddHHmmss')}}",
+              "type": "string"
+            },
+            {
+              "id": "8d4ca170-d996-4573-8eac-cc7d1243f75c",
+              "name": "categoria",
+              "value": "={{ JSON.parse($json.content.parts[0].text.replace(/```json|```/g, '')).categoria }}",
+              "type": "string"
+            },
+            {
+              "id": "ca61c53e-6bc3-48f1-964e-e71448a97c1e",
+              "name": "prioridad",
+              "value": "={{ JSON.parse($json.content.parts[0].text.replace(/```json|```/g, '')).prioridad }}",
+              "type": "string"
+            },
+            {
+              "id": "e75d0a51-a6e4-4335-af1b-6584a7023396",
+              "name": "confianza",
+              "value": "={{ JSON.parse($json.content.parts[0].text.replace(/```json|```/g, '')).confianza }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        32,
+        368
+      ],
+      "id": "716d1722-8d1a-4d19-b29a-c541201ad079",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "text": "Analiza la imagen de infraestructura urbana.\n\nClasifica el incidente como:\n\n* Bache\n* Fuga de agua\n* Semáforo averiado\n* Luminaria dañada\n* Cableado caído\n* Otro\n\nDetermina la prioridad:\n\n* Crítica\n* Moderada\n* Baja\n\nLa confianza debe ser un número entre 0 y 100.\n\nIMPORTANTE:\nResponde únicamente con JSON puro.\nNo utilices ```json.\nNo agregues explicaciones.\nNo agregues texto adicional.\n\nFormato exacto:\n\n{\n\"categoria\":\"\",\n\"prioridad\":\"\",\n\"confianza\":0\n}\n",
+        "inputType": "binary",
+        "binaryPropertyName": "foto",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        -192,
+        368
+      ],
+      "id": "cf7df6a6-2d97-415c-be4d-28344cf0e5d4",
+      "name": "Analyze an image",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "p3pc9urh2dJWapAN",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Incidente",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Ticket ID": "={{$json.ticketId}}",
+            "Prioridad Asignada": "={{$json.prioridad}}",
+            "Categoria IA\n": "={{$json.categoria}}",
+            "Nivel de Confianza": "={{$json.confianza}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Ticket ID",
+              "displayName": "Ticket ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Datos Ciudadano",
+              "displayName": "Datos Ciudadano",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Coordenadas/Ubicacion",
+              "displayName": "Coordenadas/Ubicacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Categoria IA\n",
+              "displayName": "Categoria IA\n",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Prioridad Asignada",
+              "displayName": "Prioridad Asignada",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nivel de Confianza",
+              "displayName": "Nivel de Confianza",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estado Actual",
+              "displayName": "Estado Actual",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        240,
+        368
+      ],
+      "id": "f501ccb0-1959-4761-943f-13fa724b47b8",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lf87vX0PcFqj6SHm",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Append row in sheet": {
+      "main": [
+        []
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Analyze an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze an image": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "23ef5f633d4c352d7a9e753f0e7fe7f1162f1d6be9fb03c60bbbea334333d8e2"
+  }
+}

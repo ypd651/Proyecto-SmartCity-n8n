@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "path": "mapa-incidentes",
+        "responseMode": "lastNode",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ac804591-f12d-4c88-87a2-70d3d2863d78",
+      "name": "Webhook",
+      "webhookId": "23f121d6-c960-4b56-bef9-461721b69663"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1038921048,
+          "mode": "list",
+          "cachedResultName": "Datos_usuario",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI/edit#gid=1038921048"
+        },
+        "filtersUI": {
+          "values": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "596cd8ff-118a-467b-8ba0-5ffbf6cc3f30",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lf87vX0PcFqj6SHm",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "23ef5f633d4c352d7a9e753f0e7fe7f1162f1d6be9fb03c60bbbea334333d8e2"
+  }
+}

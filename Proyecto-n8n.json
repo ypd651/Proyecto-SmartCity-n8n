@@ -21,11 +21,10 @@
             "Documento": "={{$json.body.documento}}",
             "Descripción": "={{$json.body.descripcion}}",
             "Teléfono": "={{$json.body.telefono}}",
-            "Foto URL": "={{$json.body.foto}}",
             "Latitud": "={{$json.body.latitud}}",
             "Longitud": "={{$json.body.longitud}}",
-            "Ticket ID": "={{$json.ticketId}}",
-            "Nombre": "={{$json.body.nombre}}"
+            "Nombre": "={{$json.body.nombre}}",
+            "Foto URL": "={{$json.body.correo}}"
           },
           "matchingColumns": [],
           "schema": [
@@ -36,7 +35,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": true
             },
             {
               "id": "Nombre",
@@ -81,7 +81,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Latitud",
@@ -110,14 +111,14 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -464,
-        176
+        352,
+        80
       ],
-      "id": "1a034427-d52f-4a16-b9b0-9ce1b124f76f",
+      "id": "2a28b4f1-cbac-4dea-9147-cf17925a3dc7",
       "name": "Append row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "S3EfWKemFtSalJol",
+          "id": "yb9FZA36s1QPEK87",
           "name": "Google Sheets account"
         }
       }
@@ -151,10 +152,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -720,
-        304
+        -112,
+        208
       ],
-      "id": "733e6afb-7eb0-4b4e-b0f6-42aaf6756c78",
+      "id": "a3f37a01-a767-4e8a-b30a-371de6d442a2",
       "name": "Webhook",
       "webhookId": "eb7e2dd6-1baa-4acc-839d-c99a8f406a31"
     },
@@ -194,10 +195,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -256,
-        288
+        976,
+        192
       ],
-      "id": "15102aae-1c3d-4e72-adf3-828c43cd88f7",
+      "id": "757745d8-61ae-45e3-8721-6e463f405f86",
       "name": "Edit Fields"
     },
     {
@@ -218,15 +219,15 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1.2,
       "position": [
-        -464,
-        368
+        768,
+        192
       ],
-      "id": "14ffa1ce-efa9-418a-ba3f-fa685a93965e",
+      "id": "0cd9d350-bd62-4665-95e2-a6f331bc9bf7",
       "name": "Analyze an image",
       "retryOnFail": true,
       "credentials": {
         "googlePalmApi": {
-          "id": "3HqdtC7IanDPNEk5",
+          "id": "7MWGSQe2m3Ewd0aT",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -331,14 +332,14 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -32,
-        288
+        1168,
+        192
       ],
-      "id": "14e533c5-162d-4381-a6fa-aa73d5ed1085",
+      "id": "0a4f1418-9abb-4777-ae24-cb744ecdd1dd",
       "name": "Append row in sheet1",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "S3EfWKemFtSalJol",
+          "id": "yb9FZA36s1QPEK87",
           "name": "Google Sheets account"
         }
       }
@@ -352,15 +353,15 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        192,
-        288
+        1392,
+        192
       ],
-      "id": "fc2ceedb-031c-4c2d-9ef5-7e44a7b27541",
+      "id": "30e7f363-1f47-43a6-bb4c-098bdd9658d3",
       "name": "Send a text message",
       "webhookId": "b74d59e0-9fc6-4791-aa67-f78def222272",
       "credentials": {
         "telegramApi": {
-          "id": "7xoeTzaZpAf928CP",
+          "id": "ViwunoJV38SVmvuB",
           "name": "Telegram account"
         }
       }
@@ -375,15 +376,15 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.3,
       "position": [
-        576,
-        288
+        1712,
+        192
       ],
-      "id": "352952f4-e54b-465d-9e50-58302f5f15ab",
+      "id": "70e3b110-df3a-4516-a427-30f54c6f3c2b",
       "name": "Telegram Trigger",
       "webhookId": "16512170-940f-41e4-adfc-f72fed3e0cc2",
       "credentials": {
         "telegramApi": {
-          "id": "7xoeTzaZpAf928CP",
+          "id": "ViwunoJV38SVmvuB",
           "name": "Telegram account"
         }
       }
@@ -397,15 +398,15 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1216,
-        384
+        2288,
+        288
       ],
-      "id": "3ce29e5c-70a0-4a20-abbc-e2fbf1c1adb3",
+      "id": "ce77d497-8e67-4897-b2fc-4194beb7274d",
       "name": "Send a text message1",
       "webhookId": "06e5e46b-be15-4abb-9363-f0394e2b0f82",
       "credentials": {
         "telegramApi": {
-          "id": "7xoeTzaZpAf928CP",
+          "id": "ViwunoJV38SVmvuB",
           "name": "Telegram account"
         }
       }
@@ -419,15 +420,15 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1216,
-        192
+        2256,
+        80
       ],
-      "id": "d3a4c25a-fa3d-45d6-8e66-495198dd4a3c",
+      "id": "e18f815c-2ec9-4a87-b090-299f1df4ec51",
       "name": "Send a text message2",
       "webhookId": "996e9c01-d3bd-49b3-a9e1-1c6451e593a1",
       "credentials": {
         "telegramApi": {
-          "id": "7xoeTzaZpAf928CP",
+          "id": "ViwunoJV38SVmvuB",
           "name": "Telegram account"
         }
       }
@@ -459,14 +460,14 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        768,
-        288
+        1872,
+        192
       ],
-      "id": "81c3ba8d-1c87-4821-b133-aeafd8f93ecf",
+      "id": "7b33baa3-d0df-4be5-81cf-2bbec20d754c",
       "name": "Get row(s) in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "S3EfWKemFtSalJol",
+          "id": "yb9FZA36s1QPEK87",
           "name": "Google Sheets account"
         }
       }
@@ -499,11 +500,139 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        992,
-        288
+        2048,
+        192
       ],
-      "id": "4003d6c7-c4b9-4df6-b751-d2c64c234a15",
+      "id": "bc78d4e6-7c9a-44d5-bb29-d55882ec911f",
       "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "872197fe-19bb-4e3c-af29-0046fa5e33cf",
+              "leftValue": "={{ $json.body.correo.includes(\"@\");}}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        96,
+        272
+      ],
+      "id": "07ebc0bf-9810-40d1-b2a5-f2f4c056402f",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"error\": \"el correo electronico debe ser valido, debe contener '@' \"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        352,
+        464
+      ],
+      "id": "ab5924a9-4158-445e-966f-124b83c77701",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2e3b73c-1087-44fc-8b41-356c55fec21b",
+              "name": "correo",
+              "value": "={{ $json.body.correo }}",
+              "type": "string"
+            },
+            {
+              "id": "837106e1-f418-4a4c-ab45-9783443c37a2",
+              "name": "foto",
+              "value": "={{ $json.body.documento }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        352,
+        272
+      ],
+      "id": "ba050cce-da81-4712-b28b-9b9fb962128b",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "2ce6aca5-0a81-4af4-9df1-a2093e8c63ab",
+              "leftValue": "={{$json.body.foto.include(.jpg, .jpeg, .png)}}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        528,
+        272
+      ],
+      "id": "63aba42f-0d38-4837-ae8b-a1ade4cdaa15",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"error\": \"Porfavor ingrese solo archivos: .jpg, .jpeg o .png\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        768,
+        400
+      ],
+      "id": "3523496a-dbbc-4ee1-8ca7-3612269bb3a1",
+      "name": "Respond to Webhook1"
     }
   ],
   "connections": {
@@ -516,7 +645,7 @@
             "index": 0
           },
           {
-            "node": "Analyze an image",
+            "node": "If1",
             "type": "main",
             "index": 0
           }
@@ -595,11 +724,58 @@
           }
         ]
       ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Analyze an image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "2e9c2abcae97bca0ad5a4a8dd8b16f2e2eb00ba23d7fe8717418bec1f9419417"
+    "instanceId": "c276efe26de78281bdaa1a47d5dd1f0f896e8ade37169be90869a431596c995b"
   }
 }

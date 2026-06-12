@@ -110,14 +110,14 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -192,
-        128
+        -464,
+        176
       ],
-      "id": "0c2c3716-2f73-4128-b6fb-d60f15379929",
+      "id": "1a034427-d52f-4a16-b9b0-9ce1b124f76f",
       "name": "Append row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "lf87vX0PcFqj6SHm",
+          "id": "S3EfWKemFtSalJol",
           "name": "Google Sheets account"
         }
       }
@@ -151,10 +151,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -432,
-        240
+        -720,
+        304
       ],
-      "id": "e9952bef-e208-4c9f-a242-7549bf67c882",
+      "id": "733e6afb-7eb0-4b4e-b0f6-42aaf6756c78",
       "name": "Webhook",
       "webhookId": "eb7e2dd6-1baa-4acc-839d-c99a8f406a31"
     },
@@ -194,10 +194,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        32,
-        368
+        -256,
+        288
       ],
-      "id": "716d1722-8d1a-4d19-b29a-c541201ad079",
+      "id": "15102aae-1c3d-4e72-adf3-828c43cd88f7",
       "name": "Edit Fields"
     },
     {
@@ -218,14 +218,15 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1.2,
       "position": [
-        -192,
+        -464,
         368
       ],
-      "id": "cf7df6a6-2d97-415c-be4d-28344cf0e5d4",
+      "id": "14ffa1ce-efa9-418a-ba3f-fa685a93965e",
       "name": "Analyze an image",
+      "retryOnFail": true,
       "credentials": {
         "googlePalmApi": {
-          "id": "p3pc9urh2dJWapAN",
+          "id": "3HqdtC7IanDPNEk5",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -330,25 +331,182 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        240,
-        368
+        -32,
+        288
       ],
-      "id": "f501ccb0-1959-4761-943f-13fa724b47b8",
+      "id": "14e533c5-162d-4381-a6fa-aa73d5ed1085",
       "name": "Append row in sheet1",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "lf87vX0PcFqj6SHm",
+          "id": "S3EfWKemFtSalJol",
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "chatId": "6291520195",
+        "text": "=🚨 *REPORTE DE DAÑO DETECTADO* 🚨\n\n🎫 *Ticket ID:* {{ $json[\"Ticket ID\"] }}\n🔥 *Prioridad:* {{ $json[\"Prioridad Asignada\"] }}\n📦 *Categoría:* {{ $('Edit Fields').item.json.categoria }}\n🎯 *Confianza de la IA:* {{ $json[\"Nivel de Confianza\"] }}%\n\n📅 _Revisar de inmediato en el sistema._",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        192,
+        288
+      ],
+      "id": "fc2ceedb-031c-4c2d-9ef5-7e44a7b27541",
+      "name": "Send a text message",
+      "webhookId": "b74d59e0-9fc6-4791-aa67-f78def222272",
+      "credentials": {
+        "telegramApi": {
+          "id": "7xoeTzaZpAf928CP",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        576,
+        288
+      ],
+      "id": "352952f4-e54b-465d-9e50-58302f5f15ab",
+      "name": "Telegram Trigger",
+      "webhookId": "16512170-940f-41e4-adfc-f72fed3e0cc2",
+      "credentials": {
+        "telegramApi": {
+          "id": "7xoeTzaZpAf928CP",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "❌ Ticket no encontrado.  Ejemplo:  /ticket SCF-20260604135115",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1216,
+        384
+      ],
+      "id": "3ce29e5c-70a0-4a20-abbc-e2fbf1c1adb3",
+      "name": "Send a text message1",
+      "webhookId": "06e5e46b-be15-4abb-9363-f0394e2b0f82",
+      "credentials": {
+        "telegramApi": {
+          "id": "7xoeTzaZpAf928CP",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "=🎫 Ticket encontrado  ID: {{ $json[\"Ticket ID\"] }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1216,
+        192
+      ],
+      "id": "d3a4c25a-fa3d-45d6-8e66-495198dd4a3c",
+      "name": "Send a text message2",
+      "webhookId": "996e9c01-d3bd-49b3-a9e1-1c6451e593a1",
+      "credentials": {
+        "telegramApi": {
+          "id": "7xoeTzaZpAf928CP",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Incidente",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Ticket ID",
+              "lookupValue": "={{ $json.message.text.replace(/^\\/ticket\\s*/i, '').split('@')[0].trim() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        768,
+        288
+      ],
+      "id": "81c3ba8d-1c87-4821-b133-aeafd8f93ecf",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "S3EfWKemFtSalJol",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "6c22477a-0d12-48df-8a20-9afb0c9f691c",
+              "leftValue": "=={{ $json['Ticket ID'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        992,
+        288
+      ],
+      "id": "4003d6c7-c4b9-4df6-b751-d2c64c234a15",
+      "name": "If"
     }
   ],
   "connections": {
-    "Append row in sheet": {
-      "main": [
-        []
-      ]
-    },
     "Webhook": {
       "main": [
         [
@@ -386,11 +544,62 @@
           }
         ]
       ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "23ef5f633d4c352d7a9e753f0e7fe7f1162f1d6be9fb03c60bbbea334333d8e2"
+    "instanceId": "2e9c2abcae97bca0ad5a4a8dd8b16f2e2eb00ba23d7fe8717418bec1f9419417"
   }
 }

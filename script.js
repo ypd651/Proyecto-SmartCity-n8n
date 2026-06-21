@@ -77,7 +77,12 @@ reportForm.addEventListener("submit", async (e) => {
             "telefono",
             document.getElementById("telefono").value
         );
-        
+
+        formData.append(
+            "correo",
+            document.getElementById("correo").value
+        );
+            
         formData.append(
             "descripcion",
             document.getElementById("descripcion").value

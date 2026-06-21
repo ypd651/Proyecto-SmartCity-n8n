@@ -111,14 +111,14 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        352,
-        80
+        160,
+        192
       ],
-      "id": "2a28b4f1-cbac-4dea-9147-cf17925a3dc7",
+      "id": "c163c9c8-3c80-4217-8f58-7fe49be7d155",
       "name": "Append row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "yb9FZA36s1QPEK87",
+          "id": "ENNGYO4nFbeWQ9wU",
           "name": "Google Sheets account"
         }
       }
@@ -127,10 +127,8 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "smartcity-report",
+        "responseMode": "responseNode",
         "options": {
-          "responseCode": {
-            "values": {}
-          },
           "responseHeaders": {
             "entries": [
               {
@@ -152,10 +150,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -112,
-        208
+        -304,
+        320
       ],
-      "id": "a3f37a01-a767-4e8a-b30a-371de6d442a2",
+      "id": "3b61b09d-509c-407f-9028-6062b5aa484f",
       "name": "Webhook",
       "webhookId": "eb7e2dd6-1baa-4acc-839d-c99a8f406a31"
     },
@@ -195,10 +193,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        976,
-        192
+        784,
+        304
       ],
-      "id": "757745d8-61ae-45e3-8721-6e463f405f86",
+      "id": "b1cb03ed-f0f8-45f6-bca9-b9c936c841e7",
       "name": "Edit Fields"
     },
     {
@@ -219,15 +217,15 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1.2,
       "position": [
-        768,
-        192
+        576,
+        304
       ],
-      "id": "0cd9d350-bd62-4665-95e2-a6f331bc9bf7",
+      "id": "7779a5fe-787e-4204-a7f0-7fe929bb2294",
       "name": "Analyze an image",
       "retryOnFail": true,
       "credentials": {
         "googlePalmApi": {
-          "id": "7MWGSQe2m3Ewd0aT",
+          "id": "RBLIockA5Oqp1uez",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -237,7 +235,7 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI",
+          "value": "=1aYeJuOWUqDTdJzVd41VEgBk3BLKF3QodX9I7suzULmI",
           "mode": "id"
         },
         "sheetName": {
@@ -253,7 +251,8 @@
             "Ticket ID": "={{$json.ticketId}}",
             "Prioridad Asignada": "={{$json.prioridad}}",
             "Categoria IA\n": "={{$json.categoria}}",
-            "Nivel de Confianza": "={{$json.confianza}}"
+            "Nivel de Confianza": "={{$json.confianza}}",
+            "Correo": "=={{ $json.body.correo }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -322,6 +321,16 @@
               "type": "string",
               "canBeUsedToMatch": true,
               "removed": true
+            },
+            {
+              "id": "Correo",
+              "displayName": "Correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -332,14 +341,14 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1168,
-        192
+        976,
+        304
       ],
-      "id": "0a4f1418-9abb-4777-ae24-cb744ecdd1dd",
+      "id": "baa3e1ae-0634-4ad7-aa13-febe6cf9b8e2",
       "name": "Append row in sheet1",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "yb9FZA36s1QPEK87",
+          "id": "ENNGYO4nFbeWQ9wU",
           "name": "Google Sheets account"
         }
       }
@@ -353,15 +362,15 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1392,
-        192
+        1200,
+        304
       ],
-      "id": "30e7f363-1f47-43a6-bb4c-098bdd9658d3",
+      "id": "c4896ab0-92e2-4d70-8608-48066fa36b09",
       "name": "Send a text message",
       "webhookId": "b74d59e0-9fc6-4791-aa67-f78def222272",
       "credentials": {
         "telegramApi": {
-          "id": "ViwunoJV38SVmvuB",
+          "id": "CA5MtpawFxAdMEee",
           "name": "Telegram account"
         }
       }
@@ -376,15 +385,15 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.3,
       "position": [
-        1712,
-        192
+        1520,
+        304
       ],
-      "id": "70e3b110-df3a-4516-a427-30f54c6f3c2b",
+      "id": "e4692857-f692-4de8-a79a-31a7fb494d66",
       "name": "Telegram Trigger",
       "webhookId": "16512170-940f-41e4-adfc-f72fed3e0cc2",
       "credentials": {
         "telegramApi": {
-          "id": "ViwunoJV38SVmvuB",
+          "id": "CA5MtpawFxAdMEee",
           "name": "Telegram account"
         }
       }
@@ -398,15 +407,15 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2288,
-        288
+        2096,
+        400
       ],
-      "id": "ce77d497-8e67-4897-b2fc-4194beb7274d",
+      "id": "9a703adf-281e-455e-aa84-10de4c72ebd7",
       "name": "Send a text message1",
       "webhookId": "06e5e46b-be15-4abb-9363-f0394e2b0f82",
       "credentials": {
         "telegramApi": {
-          "id": "ViwunoJV38SVmvuB",
+          "id": "CA5MtpawFxAdMEee",
           "name": "Telegram account"
         }
       }
@@ -420,15 +429,15 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2256,
-        80
+        2064,
+        192
       ],
-      "id": "e18f815c-2ec9-4a87-b090-299f1df4ec51",
+      "id": "d4197bb5-6367-44c4-a811-1bdab1780f6f",
       "name": "Send a text message2",
       "webhookId": "996e9c01-d3bd-49b3-a9e1-1c6451e593a1",
       "credentials": {
         "telegramApi": {
-          "id": "ViwunoJV38SVmvuB",
+          "id": "CA5MtpawFxAdMEee",
           "name": "Telegram account"
         }
       }
@@ -460,14 +469,14 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1872,
-        192
+        1680,
+        304
       ],
-      "id": "7b33baa3-d0df-4be5-81cf-2bbec20d754c",
+      "id": "20ca8678-fd21-4a56-90d1-3fda5e90928b",
       "name": "Get row(s) in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "yb9FZA36s1QPEK87",
+          "id": "ENNGYO4nFbeWQ9wU",
           "name": "Google Sheets account"
         }
       }
@@ -500,10 +509,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2048,
-        192
+        1856,
+        304
       ],
-      "id": "bc78d4e6-7c9a-44d5-bb29-d55882ec911f",
+      "id": "547d1a29-ea39-4cac-8a7f-51fe5b8231dd",
       "name": "If"
     },
     {
@@ -518,12 +527,20 @@
           "conditions": [
             {
               "id": "872197fe-19bb-4e3c-af29-0046fa5e33cf",
-              "leftValue": "={{ $json.body.correo.includes(\"@\");}}",
-              "rightValue": "",
+              "leftValue": "={{ $json.body.correo.includes(\"@\") }}",
+              "rightValue": true,
               "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
+                "type": "boolean",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "4f4f6353-8d0c-4476-af9b-76bdc387f392",
+              "leftValue": "={{ $json.body.documento.trim() !== \"\" }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
               }
             }
           ],
@@ -535,25 +552,25 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        96,
-        272
+        -96,
+        384
       ],
-      "id": "07ebc0bf-9810-40d1-b2a5-f2f4c056402f",
+      "id": "8fc47567-503b-46b7-b596-6021fb97a918",
       "name": "If1"
     },
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "{\n  \"error\": \"el correo electronico debe ser valido, debe contener '@' \"\n}",
+        "responseBody": "{\n  \"success\": false,\n  \"message\": \"❌ El correo debe contener @\"\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        352,
-        464
+        160,
+        576
       ],
-      "id": "ab5924a9-4158-445e-966f-124b83c77701",
+      "id": "d859767c-fdba-4deb-b4be-23cd78d5e8a8",
       "name": "Respond to Webhook"
     },
     {
@@ -563,26 +580,21 @@
             {
               "id": "d2e3b73c-1087-44fc-8b41-356c55fec21b",
               "name": "correo",
-              "value": "={{ $json.body.correo }}",
-              "type": "string"
-            },
-            {
-              "id": "837106e1-f418-4a4c-ab45-9783443c37a2",
-              "name": "foto",
-              "value": "={{ $json.body.documento }}",
+              "value": "={{ $json.body.correo.trim().toLowerCase() }}",
               "type": "string"
             }
           ]
         },
+        "includeOtherFields": true,
         "options": {}
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        352,
-        272
+        160,
+        384
       ],
-      "id": "ba050cce-da81-4712-b28b-9b9fb962128b",
+      "id": "bca1b1b5-c0e1-426b-a8ec-1f7313e3cac0",
       "name": "Edit Fields1"
     },
     {
@@ -596,12 +608,12 @@
           },
           "conditions": [
             {
-              "id": "2ce6aca5-0a81-4af4-9df1-a2093e8c63ab",
-              "leftValue": "={{$json.body.foto.include(.jpg, .jpeg, .png)}}",
-              "rightValue": "",
+              "id": "f88c2779-d30e-4dc0-a558-99f5deaeba4d",
+              "leftValue": "={{ ['jpg','jpeg','png'].includes($binary.foto.fileExtension.toLowerCase()) }}",
+              "rightValue": true,
               "operator": {
-                "type": "string",
-                "operation": "notEquals"
+                "type": "boolean",
+                "operation": "equals"
               }
             }
           ],
@@ -613,25 +625,25 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        528,
-        272
+        336,
+        384
       ],
-      "id": "63aba42f-0d38-4837-ae8b-a1ade4cdaa15",
+      "id": "0476fdce-a469-4405-b8cc-856ae4e9de55",
       "name": "If2"
     },
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "{\n  \"error\": \"Porfavor ingrese solo archivos: .jpg, .jpeg o .png\"\n}",
+        "responseBody": "{\n  \"success\": false,\n  \"message\": \"❌ Solo se permiten archivos JPG, JPEG o PNG\"\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        768,
-        400
+        576,
+        512
       ],
-      "id": "3523496a-dbbc-4ee1-8ca7-3612269bb3a1",
+      "id": "07c3d1ea-75f4-4f5d-8110-7a544915ed06",
       "name": "Respond to Webhook1"
     }
   ],
@@ -776,6 +788,6 @@
   "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "c276efe26de78281bdaa1a47d5dd1f0f896e8ade37169be90869a431596c995b"
+    "instanceId": "157e01bb4a0cb21c01a154955d07ed2a513c90fad6bc024d468407f00e4b4a7e"
   }
 }
